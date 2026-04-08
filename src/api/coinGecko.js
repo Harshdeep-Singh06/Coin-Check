@@ -1,5 +1,5 @@
 const BASE_URL = "https://api.coingecko.com/api/v3";
-const API_KEY = "CG-xxxx";
+const API_KEY = "CG-9pkawdGn7LbgV5KjLxuNwB2Y";
 
 export const fetchCryptos = async () => {
   const response = await fetch(
