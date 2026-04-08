@@ -20,8 +20,20 @@ export const Home = () => {
         }
     }
     return (
-        <div className=''>
-           {isLoading ? <div></div> : <div></div>}
-        </div>
-    );
+  <div className='min-h-screen bg-black'>
+    {isLoading ? (
+      <div className="flex flex-col items-center justify-center p-16 gap-4 text-[#e0e0e0]">
+        
+        <div className="w-[50px] h-[50px] border-4 border-[rgba(173,216,230,0.2)] border-t-purple-500 rounded-full animate-spin"></div>
+        
+        <p>Loading...</p>
+
+      </div>
+    ) : (
+      <div className='text-white'>
+        Data loaded
+      </div>
+    )}
+  </div>
+);
 };
