@@ -24,7 +24,17 @@ export const Home = () => {
     return (
   <div className='min-h-screen bg-black'>
 
-      <nav className='bg-purple-500 px-4 py-4 flex justify-between items-center '>
+      <nav className='bg-purple-500 px-4 py-4 flex jusitfy-center items-center '>
+          <div className='gap-2 flex bg-purple-600 p-1 rounded-lg'>
+            <button 
+            onClick={()=>setViewMode("grid")}
+             className={`px-4 py-1 rounded-md transition ${viewMode === "grid" ? "active" : ""}`}>
+              Grid</button>
+            <button 
+              onClick={()=>setViewMode("list")}
+            className={`px-4 py-1 rounded-md transition ${viewMode === "list" ? "active" : ""}`}>List</button>
+          </div>
+
       </nav>
      
     {isLoading ? (
