@@ -19,7 +19,7 @@ export const CryptoCard = ({crypto}) => {
                 </div>
             </div>
 
-              <div className="mt-5 ml-2">
+              <div className="mt-3 ml-2">
                  <p className="font-semibold text-xl">
                     {formatPrice(crypto.current_price)}
                 </p>
