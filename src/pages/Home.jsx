@@ -24,18 +24,17 @@ export const Home = () => {
     return (
   <div className='min-h-screen bg-black'>
 
-      <nav className='bg-purple-500 px-4 py-4 flex jusitfy-center items-center '>
-          <div className='gap-2 flex bg-purple-600 p-1 rounded-lg'>
+      <nav className='bg-gray-500 px-4 py-4 flex jusitfy-center items-center '>
+      </nav>
+      <div className='flex justify-end px-4 mt-4 text-sm font-semibold text-white/70'>
             <button 
             onClick={()=>setViewMode("grid")}
-             className={`px-4 py-1 rounded-md transition ${viewMode === "grid" ? "active" : ""}`}>
+             className={`px-5 py-1 rounded-md bg-gray-800 hover:bg-sky-600 hover:text-white  transition${viewMode === "grid" ? "active" : ""}`}>
               Grid</button>
             <button 
               onClick={()=>setViewMode("list")}
-            className={`px-4 py-1 rounded-md transition ${viewMode === "list" ? "active" : ""}`}>List</button>
-          </div>
-
-      </nav>
+            className={`px-5 py-1 ml-2 bg-gray-800 rounded-md hover:bg-sky-600 hover:text-white transition ${viewMode === "list" ? "active" : ""}`}>List</button>
+      </div>
      
     {isLoading ? (
       <div className="flex flex-col items-center justify-center p-16 gap-4 text-[#e0e0e0]">
