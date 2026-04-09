@@ -33,8 +33,16 @@ export const CryptoCard = ({crypto}) => {
                     ? "↑ "
                     :"↓ "}
                     {crypto.price_change_percentage_24h.toFixed(2)}%
-                </p>
-                     <div className="text-right ">
+                </p>  
+                  </div>
+                    <div className="justify-between flex">
+                    <div className = "mt-4">
+                        <span className="text-gray-500 text-xs font-semibold">
+                       MARKET CAP 
+                    </span>
+                       <div> <span className="text-sm">${formatMarketCap(crypto.market_cap)} </span></div>
+                    </div>
+                         <div className="mt-4">
                     <span className="text-gray-500 text-xs font-semibold">
                         VOLUME
                     </span>
@@ -42,8 +50,10 @@ export const CryptoCard = ({crypto}) => {
                         <span className="text-sm">${formatMarketCap(crypto.total_volume)} </span>
                     </div>
                  </div>
-                  </div>
+                 </div>
+                    
               </div>
+              
         </div>
     )
 
