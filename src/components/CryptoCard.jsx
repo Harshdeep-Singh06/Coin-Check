@@ -1,4 +1,5 @@
-import { formatPrice } from "../utils/formatter"
+import { formatPrice,formatMarketCap } from "../utils/formatter"
+
 
 export const CryptoCard = ({crypto}) => {
     return (
@@ -18,11 +19,11 @@ export const CryptoCard = ({crypto}) => {
                 </div>
             </div>
 
-              <div className="mt-2 ml-2">
+              <div className="mt-5 ml-2">
                  <p className="font-semibold text-xl">
                     {formatPrice(crypto.current_price)}
                 </p>
-                  <div className="flex mt-2"> 
+                  <div className="flex items-center justify-between mt-3"> 
                     <p className={` text-sm rounded-md font-medium p-2 px-2 py-1 ${
                     crypto.price_change_percentage_24h >= 0
                     ? " bg-green-400/20 text-green-400"
@@ -31,8 +32,16 @@ export const CryptoCard = ({crypto}) => {
                     {crypto.price_change_percentage_24h >= 0
                     ? "↑ "
                     :"↓ "}
-                    {crypto.price_change_percentage_24h.toFixed(2)}
+                    {crypto.price_change_percentage_24h.toFixed(2)}%
                 </p>
+                     <div className="text-right ">
+                    <span className="text-gray-500 text-xs font-semibold">
+                        VOLUME
+                    </span>
+                    <div>
+                        <span className="text-sm">${formatMarketCap(crypto.total_volume)} </span>
+                    </div>
+                 </div>
                   </div>
               </div>
         </div>
