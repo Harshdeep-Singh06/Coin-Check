@@ -5,6 +5,7 @@ export const Home = () => {
 
     const [cryptoList, setCryptoList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [viewMode, setViewMode] = useState("grid")
 
     useEffect(()=>{
         fetchCryptoData();
@@ -22,6 +23,10 @@ export const Home = () => {
     }
     return (
   <div className='min-h-screen bg-black'>
+
+      <nav className='bg-purple-500 px-4 py-4 flex justify-between items-center '>
+      </nav>
+     
     {isLoading ? (
       <div className="flex flex-col items-center justify-center p-16 gap-4 text-[#e0e0e0]">
         
