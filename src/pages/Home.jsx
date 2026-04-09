@@ -26,7 +26,7 @@ export const Home = () => {
 
       <nav className='bg-gray-500 px-4 py-4 flex jusitfy-center items-center '>
       </nav>
-      <div className='flex justify-end px-4 mt-4 text-sm font-semibold text-white/70'>
+      <div className='flex justify-end px-4 mt-4 text-sm font-semibold text-white/70 mb-4'>
             <button 
             onClick={()=>setViewMode("grid")}
              className={`px-5 py-1 rounded-md bg-gray-800 hover:bg-sky-600 hover:text-white  transition${viewMode === "grid" ? "active" : ""}`}>
@@ -45,7 +45,7 @@ export const Home = () => {
 
       </div>
     ) : (
-      <div className='text-white'>
+      <div className='text-white max-w-6xl mx-auto px-6 gap-4 flex grid'>
         {cryptoList.map((crypto, key)=>(
             <CryptoCard crypto = {crypto} key = {crypto.id}/>
         ))}

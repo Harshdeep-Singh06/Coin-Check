@@ -35,14 +35,14 @@ export const CryptoCard = ({crypto}) => {
                     {crypto.price_change_percentage_24h.toFixed(2)}%
                 </p>  
                   </div>
-                    <div className="justify-between flex">
-                    <div className = "mt-4">
+                    <div className="border-t border-gray-700 mt-4 pt-4 flex justify-between">
+                    <div >
                         <span className="text-gray-500 text-xs font-semibold">
                        MARKET CAP 
                     </span>
                        <div> <span className="text-sm">${formatMarketCap(crypto.market_cap)} </span></div>
                     </div>
-                         <div className="mt-4">
+                         <div>
                     <span className="text-gray-500 text-xs font-semibold">
                         VOLUME
                     </span>
