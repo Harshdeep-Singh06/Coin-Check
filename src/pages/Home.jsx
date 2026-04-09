@@ -4,8 +4,10 @@ import { CryptoCard } from '../components/CryptoCard';
 export const Home = () => {
 
     const [cryptoList, setCryptoList] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [viewMode, setViewMode] = useState("grid")
+    const [sortBy, setSortBy] = useState("market_cap_rank");
 
     useEffect(()=>{
         fetchCryptoData();
@@ -21,6 +23,17 @@ export const Home = () => {
             setIsLoading(false);
         }
     }
+
+    const filteredAndSort = () => {
+      let filtered = [...cryptoList];
+      filtered.sort((a, b)=>{
+        switch(sortBy) {
+          case "name":
+           return a.name.localeCompare(b.name);
+        }
+      })
+    }
+
     return (
   <div className='min-h-screen bg-black'>
 
@@ -28,9 +41,11 @@ export const Home = () => {
       </nav>
 
      <div className='flex justify-between items-center px-4 mb-4'>
-        <label className='text-white/50 sm:text-sm font-semibold md:ml-50'>Sort by :</label>
-        <select className='text-white/50 sm:text-xs py-1
-        font-semibold rounded-md border-3 border-gray-800 sm:mr-100 md:mr-185 outline-none'>
+        <label className='text-white/50 text-sm font-semibold md:ml-50'>Sort by :</label>
+        <select
+        value = {sortBy} onChange={(e)=>setSortBy(e.target.value)}
+        className='text-white/50 text-xs py-1
+        font-semibold rounded-md border-3 border-gray-800 bg-black sm:mr-100 md:mr-185 outline-none'>
           <option value = "market_cap_rank">Rank</option>
           <option value = "name">Name</option>
           <option value = "price">Price (Low to High)</option>
