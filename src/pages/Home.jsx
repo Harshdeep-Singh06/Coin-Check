@@ -33,7 +33,7 @@ export const Home = () => {
     ) : (
       <div className='text-white'>
         {cryptoList.map((crypto, key)=>(
-            <CryptoCard crypto = {crypto} key = {key}/>
+            <CryptoCard crypto = {crypto} key = {crypto.id}/>
         ))}
       </div>
     )}
