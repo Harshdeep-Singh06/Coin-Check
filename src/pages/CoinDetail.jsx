@@ -26,17 +26,17 @@ export const CoinDetail = () => {
                 }
     };
 
-        if (isLoading){
-            return (
-                <div className="flex flex-col items-center justify-center p-16 gap-4 text-[#e0e0e0]">
-        
-             <div className="w-[50px] h-[50px] border-4 border-[rgba(173,216,230,0.2)] border-t-purple-500 rounded-full animate-spin"></div>
-        
-             <p>Loading coin data...</p>
+       if (isLoading){
+    return (
+        <div className="min-h-screen bg-black flex flex-col items-center justify-center p-16 gap-4 text-[#e0e0e0]">
+            
+            <div className="w-[50px] h-[50px] border-4 border-[rgba(173,216,230,0.2)] border-t-purple-500 rounded-full animate-spin"></div>
+            
+            <p>Loading coin data...</p>
 
-             </div>
-            )
-        }
+        </div>
+    )
+}
 
 
          if (!coin){
@@ -69,6 +69,10 @@ export const CoinDetail = () => {
             </button>
          </div>
       </nav>
+      <div className="mx-auto max-w-6xl flex ">
+        <img src={coin.image.large} alt={coin.name}
+        className="w-12 h-12 sm:ml-5 object-contain rouned-full p-2"/>
+      </div>
       </div>     
 )   
 
