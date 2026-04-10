@@ -53,11 +53,20 @@ export const Home = () => {
     return (
   <div className='min-h-screen bg-black'>
 
-      <nav className='black px-4 py-4 flex items-center '>
+      <nav className='black px-4 py-4 flex items-center md:jusitfy-between max-w-6xl mx-auto'>
         <header className='mt-6'>
-          <h1 className='text-gray-400 font-bold text-3xl md:ml-45 '>🚀 Crypto Check</h1>
-          <p className='text-gray-500 md:ml-50 mt-3 mb-6'>Real-time cryptocurrency prices and market data</p>
+          
+          <h1 className='text-gray-400 font-bold text-3xl '>🚀 Crypto Check</h1>
+          <p className='text-gray-500 mt-3'>Real-time cryptocurrency prices and market data</p>
+          <div className='flex items-center'>
+              <input
+            type="text"
+            placeholder="Search crypto..."
+           className=" px-4 py-1 rounded-md bg-gray-900 text-white border border-gray-700 outline-none focus:border-sky-50 mt-10"
+           />
+            </div>
         </header>
+        
       </nav>
 
      <div className='flex justify-between items-center px-4 mb-4'>
