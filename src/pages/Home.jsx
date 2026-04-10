@@ -51,23 +51,38 @@ export const Home = () => {
     }
 
     return (
-  <div className='min-h-screen bg-black'>
+     <div className='min-h-screen bg-black'>
+        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto'>
 
-      <nav className='black px-4 py-4 flex items-center md:jusitfy-between max-w-6xl mx-auto'>
-        <header className='mt-6'>
-          
-          <h1 className='text-gray-400 font-bold text-3xl '>🚀 Crypto Check</h1>
-          <p className='text-gray-500 mt-3'>Real-time cryptocurrency prices and market data</p>
-          <div className='flex items-center'>
-              <input
-            type="text"
-            placeholder="Search crypto..."
-           className=" px-4 py-1 rounded-md bg-gray-900 text-white border border-gray-700 outline-none focus:border-sky-50 mt-10"
-           />
-            </div>
-        </header>
-        
-      </nav>
+         <div>
+           <h1 className='text-gray-400 font-bold text-3xl'>
+              🚀 Crypto Check
+           </h1>
+            <p className='text-gray-500 mt-2'>
+               Real-time cryptocurrency prices and market data
+           </p>
+         </div>
+
+        <div className='flex items-center mr-10 md:mr-50'>
+        <input
+    type="text"
+    placeholder="Search crypto..."
+    className="px-10 py-2 text-white 
+    border-2 border-gray-900 border-r-0 rounded-l-full 
+    outline-none transition
+    placeholder-gray-500"
+  />
+
+  <button
+    className="px-4 py-2
+    border-2 border-gray-900 border-l-0
+    rounded-r-full transition duration-300"
+  >
+    <p className='active:translate-y-1 duration-300'>🔍</p>
+  </button>
+        </div>
+
+        </nav>
 
      <div className='flex justify-between items-center px-4 mb-4'>
         <label className='text-white/50 text-sm font-semibold md:ml-50'>Sort by :</label>
