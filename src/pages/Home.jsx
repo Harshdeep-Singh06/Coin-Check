@@ -56,7 +56,7 @@ export const Home = () => {
 
     return (
      <div className='min-h-screen bg-black'>
-        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto'>
+        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b-2 border-gray-900'>
 
          <div>
            <h1 className='text-gray-400 font-bold text-3xl'>
@@ -90,7 +90,7 @@ export const Home = () => {
 
         </nav>
 
-     <div className='flex justify-between items-center px-4 mb-4'>
+     <div className='flex justify-between items-center px-4 mb-6 mt-4'>
         <label className='text-white/50 text-sm font-semibold md:ml-50'>Sort by :</label>
         <select
         value = {sortBy} onChange={(e)=>setSortBy(e.target.value)}
