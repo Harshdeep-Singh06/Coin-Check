@@ -62,6 +62,12 @@ export const CoinDetail = () => {
                Real-time cryptocurrency prices and market data
            </p>
          </div>
+         <div className="flex items-center">
+            <button onClick={()=>navigate("/")}
+            className="border-gray-900 border-4 rounded-md px-2 py-1 text-gray-500 hover:border-gray-800 font-semibold active:translate-y-1 transition">
+                ← Back to List
+            </button>
+         </div>
       </nav>
       </div>     
 )   
