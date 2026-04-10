@@ -54,9 +54,9 @@ export const Home = () => {
   <div className='min-h-screen bg-black'>
 
       <nav className='black px-4 py-4 flex items-center '>
-        <header className='f'>
-          <h1 className='text-gray-500 font-bold text-3xl ml-10 md:ml-45 '>🚀 Crypto Check</h1>
-          <p className='text-gray-600'>Real-time cryptocurrency prices and market data</p>
+        <header className='mt-6'>
+          <h1 className='text-gray-400 font-bold text-3xl md:ml-45 '>🚀 Crypto Check</h1>
+          <p className='text-gray-500 md:ml-50 mt-3 mb-6'>Real-time cryptocurrency prices and market data</p>
         </header>
       </nav>
 
@@ -96,7 +96,7 @@ export const Home = () => {
       <div className={`text-white max-w-6xl mx-auto px-6 ${
     viewMode === "grid"
       ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-      : "flex flex-col gap-4"
+      : "flex flex-col gap-4 mt-12"
         }`}>
         {filteredList.map((crypto)=>(
             <CryptoCard crypto = {crypto} key = {crypto.id}/>
