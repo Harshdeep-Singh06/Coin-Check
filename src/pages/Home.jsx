@@ -12,6 +12,11 @@ export const Home = () => {
     useEffect(()=>{
         fetchCryptoData();
     },[])
+
+    useEffect(()=>{
+      filteredAndSort();
+    },[sortBy, cryptoList])
+
     const fetchCryptoData = async () => {
         try{
             const data = await fetchCryptos();
@@ -42,12 +47,17 @@ export const Home = () => {
             return a.market_cap_rank - b.market_cap_rank;
         }
       })
+      setFilteredList(filtered)
     }
 
     return (
   <div className='min-h-screen bg-black'>
 
-      <nav className='bg-gray-500 px-4 py-4 flex jusitfy-center items-center '>
+      <nav className='black px-4 py-4 flex items-center '>
+        <header className='f'>
+          <h1 className='text-gray-500 font-bold text-3xl ml-10 md:ml-45 '>🚀 Crypto Check</h1>
+          <p className='text-gray-600'>Real-time cryptocurrency prices and market data</p>
+        </header>
       </nav>
 
      <div className='flex justify-between items-center px-4 mb-4'>
@@ -66,7 +76,7 @@ export const Home = () => {
        <div className='flex text-sm font-semibold text-white/70 mb-4 md:mr-50'>
             <button 
             onClick={()=>setViewMode("grid")}
-             className={`px-5 py-1 rounded-md bg-gray-800 hover:bg-sky-600 hover:text-white mt-4  transition${viewMode === "grid" ? "active" : ""}`}>
+             className={`px-5 py-1 rounded-md bg-gray-800 hover:bg-sky-600 hover:text-white mt-4  transition ${viewMode === "grid" ? "active" : ""}`}>
               Grid</button>
             <button 
               onClick={()=>setViewMode("list")}
@@ -88,7 +98,7 @@ export const Home = () => {
       ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
       : "flex flex-col gap-4"
         }`}>
-        {cryptoList.map((crypto, key)=>(
+        {filteredList.map((crypto)=>(
             <CryptoCard crypto = {crypto} key = {crypto.id}/>
         ))}
       </div>

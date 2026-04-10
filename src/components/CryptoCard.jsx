@@ -3,7 +3,7 @@ import { formatPrice,formatMarketCap } from "../utils/formatter"
 
 export const CryptoCard = ({crypto}) => {
     return (
-        <div className="bg-black border border-gray-800 text-white p-4 rounded-xl flex flex-col hover:bg-gray-900 transition">
+        <div className="bg-black border border-gray-800 text-white p-4 rounded-xl flex flex-col hover:translate-y-1 hover:shadow-2xl hover:shadow-gray-800 duration-200">
 
             <div className="flex items-center gap-4">
                <div>
