@@ -8,6 +8,7 @@ export const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [viewMode, setViewMode] = useState("grid")
     const [sortBy, setSortBy] = useState("market_cap_rank");
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(()=>{
         fetchCryptoData();
@@ -15,7 +16,7 @@ export const Home = () => {
 
     useEffect(()=>{
       filteredAndSort();
-    },[sortBy, cryptoList])
+    },[sortBy, cryptoList,searchQuery])
 
     const fetchCryptoData = async () => {
         try{
@@ -30,7 +31,10 @@ export const Home = () => {
     }
 
     const filteredAndSort = () => {
-      let filtered = [...cryptoList];
+      let filtered = cryptoList.filter((crypto)=>crypto.name.toLowerCase().includes(searchQuery.toLowerCase())||
+      crypto.symbol.toLowerCase().includes(searchQuery.toLowerCase()))
+
+
       filtered.sort((a, b)=>{
         switch(sortBy) {
           case "name":
@@ -71,6 +75,8 @@ export const Home = () => {
     border-2 border-gray-900 border-r-0 rounded-l-full 
     outline-none transition
     placeholder-gray-500"
+    onChange={(e)=>setSearchQuery(e.target.value)}
+    value={searchQuery}
   />
 
   <button
