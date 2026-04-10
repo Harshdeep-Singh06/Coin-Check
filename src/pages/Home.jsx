@@ -30,6 +30,16 @@ export const Home = () => {
         switch(sortBy) {
           case "name":
            return a.name.localeCompare(b.name);
+           case "price":
+            return a.current_price - b.current_price;
+           case "price_desc":
+            return b.current_price - a.current_price;
+           case "change":
+            return a.price_change_percentage_24h - b.price_change_percentage_24h;
+           case "market_cap":
+            return a.market_cap - b.market_cap;
+          default:
+            return a.market_cap_rank - b.market_cap_rank;
         }
       })
     }
@@ -45,7 +55,7 @@ export const Home = () => {
         <select
         value = {sortBy} onChange={(e)=>setSortBy(e.target.value)}
         className='text-white/50 text-xs py-1
-        font-semibold rounded-md border-3 border-gray-800 bg-black sm:mr-100 md:mr-185 outline-none'>
+        font-semibold flex rounded-md border-3 border-gray-800 bg-black sm:mr-100 md:mr-185 outline-none'>
           <option value = "market_cap_rank">Rank</option>
           <option value = "name">Name</option>
           <option value = "price">Price (Low to High)</option>
