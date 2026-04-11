@@ -3,7 +3,7 @@ import { fetchCoinData } from "../api/coinGecko";
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatPrice } from "../utils/formatter";
-import {LineChart, ResponsiveContainer} from "recharts"; 
+import {CartesianGrid, LineChart, ResponsiveContainer} from "recharts"; 
 
 export const CoinDetail = () => {
 
@@ -15,6 +15,7 @@ export const CoinDetail = () => {
 
     useEffect(()=>{
         loadCoinData();
+        loadChartData();
     }, [id])
 
     const loadCoinData = async () => {
@@ -22,6 +23,25 @@ export const CoinDetail = () => {
                     const data = await fetchCoinData(id);
                 setCoin(data);
                 console.log(data);
+                }catch (err) {
+                    console.error("Error fetching cryptos:",err);
+                }finally {
+                    setIsLoading(false);
+                }
+    };
+    const loadChartData = async () => {
+          try{
+               const data = await fetchChartData(id);
+
+                const formattedData = data.prices.map((price, key)=>({
+                    time: newDate(price[0].toLocaleDate("en-US",{
+                        month:"short",
+                        day:"numeric"
+                    })) ,
+                    price: price[1].toFixed(2) ,
+                }));
+
+                setChartData(formattedData);
                 }catch (err) {
                     console.error("Error fetching cryptos:",err);
                 }finally {
@@ -55,7 +75,7 @@ export const CoinDetail = () => {
      }
      return(
          <div className='min-h-screen bg-black'>
-        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b-1 border-gray-900'>
+        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b border-gray-900'>
 
          <div>
            <h1 className='text-gray-400 font-bold text-3xl'>
@@ -75,15 +95,15 @@ export const CoinDetail = () => {
       <div className="mx-auto md:max-w-6xl flex mt-6  ">
         <img src={coin.image.small} alt={coin.name}
         className="w-16 h-16 p-2 ml-3 md:ml-0"/>
-        <div className="">
+        <div>
             <h1 className="ml-1 mt-1 font-semibold text-gray-400">{coin.name}</h1>
             <p className="text-gray-600 text-xs ml-2 mt-1">{coin.symbol.toUpperCase()}</p>
         </div>
       </div>
-       <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto ml-6 md:ml-51">
+       <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto ml-6 md:ml-52">
         #{coin.market_cap_rank}
         </span>
-       <div className="border-2 border-gray-900 max-w-sm md:max-w-6xl mx-auto rounded-2xl px-4 py-5 md:py-8 ml-4 md:ml-50 md:mt-10 mt-4 ">
+       <div className="border-2 border-gray-900 max-w-sm md:max-w-6xl mx-auto rounded-xl px-4 py-5 md:py-8 ml-4 md:ml-46 md:mt-10 mt-4 ">
         <div className="flex mt-2">
          <p className="font-semibold text-2xl ml-1 text-white">
              {formatPrice(coin.market_data.current_price.usd)}
@@ -110,11 +130,11 @@ export const CoinDetail = () => {
             <span className="text-gray-200 md:mr-200">{formatPrice(coin.market_data.low_24h.usd)}</span>
         </div>
        </div>
-       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex mt-12 rounded-xl py-6 px-4 ml-4 md:ml-50">
-        <h1 className="text-gray-400 font-bold text-xl md:text-2xl w-full px-6">Price Chart (7 Days)</h1>
+       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
+        <h1 className="text-gray-400 font-bold mb-4 text-xl px-6 md:text-2xl ">Price Chart (7 Days)</h1>
          <ResponsiveContainer width="100%" height={400}>
             <LineChart data={chartData}>
-
+            <CartesianGrid strokeDasharray="3 3"/>
             </LineChart>
          </ResponsiveContainer>
        </div>
