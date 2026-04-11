@@ -1,5 +1,5 @@
 import { formatPrice,formatMarketCap } from "../utils/formatter"
-import { Link } from "react-router"
+import { Link } from "react-router-dom"
 
 
 export const CryptoCard = ({crypto}) => {

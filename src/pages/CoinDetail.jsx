@@ -138,7 +138,12 @@ export const CoinDetail = () => {
             <XAxis dataKey="time"/>
             <YAxis/>
 
-            <Line />
+            <Line 
+            type="monotone"
+            stroke="#ADD8E6"
+            strokeWidth={2}
+            dataKey="price"
+            dot={false}/>
             </LineChart>
          </ResponsiveContainer>
        </div>
