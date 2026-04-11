@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
-import { formatPrice } from "../utils/formatter";
+import { formatPrice,formatMarketCap } from "../utils/formatter";
 import {CartesianGrid, LineChart, ResponsiveContainer,XAxis,YAxis,Line, Tooltip} from "recharts";
 import { fetchCoinData, fetchChartData } from "../api/coinGecko";
 
@@ -160,6 +160,12 @@ export const CoinDetail = () => {
             />
             </LineChart>
          </ResponsiveContainer>
+       </div>
+       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
+        <div className="px-6">
+            <div className="text-gray-600 font-semibold">MARKET CAP</div>
+            <div className="text-gray-400 mt-2">{formatMarketCap(coin.market_data.market_cap.usd)}</div>
+        </div>
        </div>
       </div>  
 )   
