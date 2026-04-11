@@ -74,7 +74,7 @@ export const CoinDetail = () => {
         )
      }
      return(
-         <div className='min-h-screen bg-black'>
+         <div className='min-h-screen bg-black pb-16'>
         <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b border-gray-900'>
 
          <div>
@@ -164,7 +164,25 @@ export const CoinDetail = () => {
        <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
         <div className="px-6">
             <div className="text-gray-600 font-semibold">MARKET CAP</div>
-            <div className="text-gray-400 mt-2">{formatMarketCap(coin.market_data.market_cap.usd)}</div>
+            <div className="text-gray-300 mt-2 text-lg md:text-xl font-bold">${formatMarketCap(coin.market_data.market_cap.usd)}</div>
+        </div>
+       </div>
+       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
+        <div className="px-6">
+            <div className="text-gray-600 font-semibold">VOLUME (24)</div>
+            <div className="text-gray-300 mt-2 text-lg md:text-xl font-bold">${formatMarketCap(coin.market_data.total_volume.usd)}</div>
+        </div>
+       </div>
+       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
+        <div className="px-6">
+            <div className="text-gray-600 font-semibold">CIRCULATING SUPPLY</div>
+            <div className="text-gray-300 mt-2 text-lg md:text-xl font-bold">{coin.market_data.circulating_supply.toLocaleString() || "N/A"}</div>
+        </div>
+       </div>
+       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
+        <div className="px-6">
+            <div className="text-gray-600 font-semibold">TOTAL SUPPLY</div>
+            <div className="text-gray-300 mt-2 text-lg md:text-xl font-bold">{coin.market_data.total_supply.toLocaleString() || "N/A"}</div>
         </div>
        </div>
       </div>  
