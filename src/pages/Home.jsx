@@ -56,7 +56,7 @@ export const Home = () => {
 
     return (
      <div className='min-h-screen bg-black'>
-        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b-2 border-gray-900'>
+        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b-1 border-gray-900'>
 
          <div>
            <h1 className='text-gray-400 font-bold text-3xl'>

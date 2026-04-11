@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchCoinData } from "../api/coinGecko";
 import { useEffect } from "react";
 import { useState } from "react";
+import { formatPrice } from "../utils/formatter";
 
 export const CoinDetail = () => {
 
@@ -52,7 +53,7 @@ export const CoinDetail = () => {
      }
      return(
          <div className='min-h-screen bg-black'>
-        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b-2 border-gray-900'>
+        <nav className='px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-7 max-w-6xl mx-auto border-b-1 border-gray-900'>
 
          <div>
            <h1 className='text-gray-400 font-bold text-3xl'>
@@ -69,11 +70,37 @@ export const CoinDetail = () => {
             </button>
          </div>
       </nav>
-      <div className="mx-auto max-w-6xl flex ">
-        <img src={coin.image.large} alt={coin.name}
-        className="w-12 h-12 sm:ml-5 object-contain rouned-full p-2"/>
+      <div className="mx-auto max-w-6xl flex mt-6 ">
+        <img src={coin.image.small} alt={coin.name}
+        className="w-16 h-16 p-2"/>
+        <div className="">
+            <h1 className="ml-1 mt-1 font-semibold text-gray-400">{coin.name}</h1>
+            <p className="text-gray-600 text-xs ml-2 mt-1">{coin.symbol.toUpperCase()}</p>
+        </div>
       </div>
-      </div>     
+       <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto sm:ml-3 md:ml-51">
+        #{coin.market_cap_rank}
+        </span>
+       <div className="border-2 border-gray-900 max-w-xs mx-auto rounded-2xl px-4 py-5 ml-4 md:ml-50 md:mt-10">
+        <div className="flex mt-2">
+         <p className="font-semibold text-2xl ml-1 text-white">
+             {formatPrice(coin.market_data.current_price.usd)}
+         </p>
+         </div>
+        <div className="flex mt-4 mb-4 ml-1">
+             <p className={` text-sm text-white rounded-md font-medium p-2 px-2 py-1 ${
+            coin.market_data.price_change_percentage_24h >= 0
+            ? " bg-green-400/20 text-green-400"
+              : " bg-red-400/20 text-red-400"
+                }`}>
+                   {coin.market_data.price_change_percentage_24h >= 0
+                  ? "↑ "
+                  :"↓ "}
+                 {coin.market_data.price_change_percentage_24h.toFixed(2)}%
+         </p> 
+        </div>
+       </div>
+      </div>  
 )   
 
 }
