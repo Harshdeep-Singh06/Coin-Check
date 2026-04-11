@@ -3,13 +3,14 @@ import { fetchCoinData } from "../api/coinGecko";
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatPrice } from "../utils/formatter";
-import {LineChart} from "recharts"; 
+import {LineChart, ResponsiveContainer} from "recharts"; 
 
 export const CoinDetail = () => {
 
     const {id} = useParams();
     const navigate = useNavigate();
     const [coin, setCoin] = useState(null);
+    const [chartData, setChartData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
@@ -82,7 +83,7 @@ export const CoinDetail = () => {
        <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto ml-6 md:ml-51">
         #{coin.market_cap_rank}
         </span>
-       <div className="border-2 border-gray-900 max-w-xs md:max-w-6xl mx-auto rounded-2xl px-4 py-5 ml-4 md:ml-50 md:mt-10 mt-4">
+       <div className="border-2 border-gray-900 max-w-sm md:max-w-6xl mx-auto rounded-2xl px-4 py-5 md:py-8 ml-4 md:ml-50 md:mt-10 mt-4 ">
         <div className="flex mt-2">
          <p className="font-semibold text-2xl ml-1 text-white">
              {formatPrice(coin.market_data.current_price.usd)}
@@ -108,6 +109,14 @@ export const CoinDetail = () => {
             <span className="text-gray-200">{formatPrice(coin.market_data.high_24h.usd)}</span>
             <span className="text-gray-200 md:mr-200">{formatPrice(coin.market_data.low_24h.usd)}</span>
         </div>
+       </div>
+       <div className="border-2 border-gray-900 max-w-6xl mx-auto flex mt-12 rounded-xl py-6 px-4 ml-4 md:ml-50">
+        <h1 className="text-gray-400 font-bold text-xl md:text-2xl w-full px-6">Price Chart (7 Days)</h1>
+         <ResponsiveContainer width="100%" height={400}>
+            <LineChart data={chartData}>
+
+            </LineChart>
+         </ResponsiveContainer>
        </div>
       </div>  
 )   
