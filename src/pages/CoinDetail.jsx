@@ -3,6 +3,7 @@ import { fetchCoinData } from "../api/coinGecko";
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatPrice } from "../utils/formatter";
+import {LineChart} from "recharts"; 
 
 export const CoinDetail = () => {
 
@@ -72,13 +73,13 @@ export const CoinDetail = () => {
       </nav>
       <div className="mx-auto md:max-w-6xl flex mt-6  ">
         <img src={coin.image.small} alt={coin.name}
-        className="w-16 h-16 p-2"/>
+        className="w-16 h-16 p-2 ml-3 md:ml-0"/>
         <div className="">
             <h1 className="ml-1 mt-1 font-semibold text-gray-400">{coin.name}</h1>
             <p className="text-gray-600 text-xs ml-2 mt-1">{coin.symbol.toUpperCase()}</p>
         </div>
       </div>
-       <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto sm:ml-3 md:ml-51">
+       <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto ml-6 md:ml-51">
         #{coin.market_cap_rank}
         </span>
        <div className="border-2 border-gray-900 max-w-xs md:max-w-6xl mx-auto rounded-2xl px-4 py-5 ml-4 md:ml-50 md:mt-10 mt-4">
