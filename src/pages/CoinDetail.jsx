@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchCoinData } from "../api/coinGecko";
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatPrice } from "../utils/formatter";
-import {CartesianGrid, LineChart, ResponsiveContainer} from "recharts"; 
+import {CartesianGrid, LineChart, ResponsiveContainer,XAxis,YAxis,Line} from "recharts";
+import { fetchCoinData, fetchChartData } from "../api/coinGecko";
 
 export const CoinDetail = () => {
 
@@ -33,12 +33,12 @@ export const CoinDetail = () => {
           try{
                const data = await fetchChartData(id);
 
-                const formattedData = data.prices.map((price, key)=>({
-                    time: newDate(price[0].toLocaleDate("en-US",{
+                const formattedData = data.prices.map((price)=>({
+                    time: new Date(price[0]).toLocaleDateString("en-US",{
                         month:"short",
                         day:"numeric"
-                    })) ,
-                    price: price[1].toFixed(2) ,
+                    }) ,
+                    price: Number(price[1].toFixed(2)) ,
                 }));
 
                 setChartData(formattedData);
@@ -134,7 +134,11 @@ export const CoinDetail = () => {
         <h1 className="text-gray-400 font-bold mb-4 text-xl px-6 md:text-2xl ">Price Chart (7 Days)</h1>
          <ResponsiveContainer width="100%" height={400}>
             <LineChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3"/>
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)"/>
+            <XAxis dataKey="time"/>
+            <YAxis/>
+
+            <Line />
             </LineChart>
          </ResponsiveContainer>
        </div>
