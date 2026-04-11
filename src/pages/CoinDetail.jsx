@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import { formatPrice } from "../utils/formatter";
-import {CartesianGrid, LineChart, ResponsiveContainer,XAxis,YAxis,Line} from "recharts";
+import {CartesianGrid, LineChart, ResponsiveContainer,XAxis,YAxis,Line, Tooltip} from "recharts";
 import { fetchCoinData, fetchChartData } from "../api/coinGecko";
 
 export const CoinDetail = () => {
@@ -100,7 +100,7 @@ export const CoinDetail = () => {
             <p className="text-gray-600 text-xs ml-2 mt-1">{coin.symbol.toUpperCase()}</p>
         </div>
       </div>
-       <span className="mt-4 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto ml-6 md:ml-52">
+       <span className="mt-5 px-3 py-1 rounded-full bg-purple-500 text-black text-xs font-semibold mx-auto ml-6 md:ml-49">Rank
         #{coin.market_cap_rank}
         </span>
        <div className="border-2 border-gray-900 max-w-sm md:max-w-6xl mx-auto rounded-xl px-4 py-5 md:py-8 ml-4 md:ml-46 md:mt-10 mt-4 ">
@@ -145,6 +145,10 @@ export const CoinDetail = () => {
             style={{fontSize:"12px"}}
             domain={["auto","auto"]}
             />
+            <Tooltip contentStyle={{backgroundColor:"rgba(20,20,40,0.95)",border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "8px",
+                color: "#e0e0e0",
+            }}/>
 
             <Line 
             type="monotone"
