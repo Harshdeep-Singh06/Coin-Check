@@ -104,13 +104,13 @@ export const CoinDetail = () => {
         #{coin.market_cap_rank}
         </span>
        <div className="border-2 border-gray-900 max-w-sm md:max-w-6xl mx-auto rounded-xl px-4 py-5 md:py-8 ml-4 md:ml-46 md:mt-10 mt-4 ">
-        <div className="flex mt-2">
+        <div className="flex">
          <p className="font-semibold text-2xl ml-1 text-white">
              {formatPrice(coin.market_data.current_price.usd)}
          </p>
          </div>
         <div className="flex mt-4 mb-5 ml-1">
-             <p className={` text-sm text-white rounded-md font-medium p-2 px-2 py-1 ${
+             <p className={` text-sm rounded-md font-medium p-2 px-2 py-1 ${
             coin.market_data.price_change_percentage_24h >= 0
             ? " bg-green-400/20 text-green-400"
               : " bg-red-400/20 text-red-400"
@@ -121,13 +121,13 @@ export const CoinDetail = () => {
                  {coin.market_data.price_change_percentage_24h.toFixed(2)}%
          </p> 
         </div>
-        <div className="justify-between flex">
+        <div className="justify-between flex md:mt-8">
             <span className="text-gray-500 text-xs ">24h High</span>
-            <span className="text-gray-500 text-xs md:mr-200">24h low</span>
+            <span className="text-gray-500 text-xs md:mr-210">24h low</span>
         </div>
         <div className="justify-between flex mt-2">
             <span className="text-gray-200">{formatPrice(coin.market_data.high_24h.usd)}</span>
-            <span className="text-gray-200 md:mr-200">{formatPrice(coin.market_data.low_24h.usd)}</span>
+            <span className="text-gray-200 md:mr-210">{formatPrice(coin.market_data.low_24h.usd)}</span>
         </div>
        </div>
        <div className="border-2 border-gray-900 max-w-6xl mx-auto flex flex-col mt-12 rounded-xl py-6 px-4">
