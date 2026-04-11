@@ -135,15 +135,25 @@ export const CoinDetail = () => {
          <ResponsiveContainer width="100%" height={400}>
             <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)"/>
-            <XAxis dataKey="time"/>
-            <YAxis/>
+            <XAxis 
+            stroke = "#9ca3af"
+            style={{fontSize:"12px"}}
+            dataKey="time"
+            />
+            <YAxis
+            stroke="#9ca3af"
+            style={{fontSize:"12px"}}
+            domain={["auto","auto"]}
+            />
 
             <Line 
             type="monotone"
             stroke="#ADD8E6"
             strokeWidth={2}
             dataKey="price"
-            dot={false}/>
+            dot={false}
+            
+            />
             </LineChart>
          </ResponsiveContainer>
        </div>
